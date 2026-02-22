@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash  
 date
 # Display usage if the script is not run with required options
 usage() {
