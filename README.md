@@ -1,6 +1,14 @@
 # LongTermStorageaDNA pipeline
-Set of scripts and customized code, which were used to analyse the ancient human genomic data from the "The effect of long-term storage on ancient DNA samples" project (master thesis). 
-Available at https://utheses.univie.ac.at/detail/74668 . 
+A bioinformatics pipeline for the analysis of human ancient DNA (aDNA) samples.
+
+This pipeline contains a set of scripts and customized code, which were originally developed for the analysis of ancient human genomic data generated for the project "The effect of long-term storage on ancient DNA samples" project (Master' thesis). 
+Available at https://utheses.univie.ac.at/detail/74668 .
+
+**aDNAPrePro**
+
+The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It contains scripts and customised code developed for the analysis of ancient human genomic data generated  the project **“The effect of long-term storage on ancient DNA samples”** (Master’s thesis).
+
+Thesis available here: https://utheses.univie.ac.at/detail/74668
 
 Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.
 
