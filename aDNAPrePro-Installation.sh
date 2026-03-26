@@ -48,6 +48,10 @@ echo "Download complete."
 # Extract repository
 unzip -q "$WorkDir/aDNAPrePro.zip" -d "$WorkDir"
 
+echo "DEBUG: WorkDir = $WorkDir"
+echo "DEBUG: contents of WorkDir:"
+ls -l "$WorkDir"
+
 # Detect extracted folder
 ExtractedDir=$(find "$WorkDir" -maxdepth 1 -type d -name "LongTermStorageaDNA-*" | head -n 1)
 
