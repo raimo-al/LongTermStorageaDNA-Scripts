@@ -2,23 +2,24 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Step1.sh this is the first of six scripts to preprocess ancient DNA.
+# Version: 1.0
+# Date: Feb 2026
+# Step33.sh this is the fifth of seven scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-# Step 1: Adapter trimming with Cutadapt
-# Software Cutadapt (https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200) 
+# Step33 sorts the *"_sorted.bam" files into *"_rmdup.bam" files
+# Software SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 ##
-# Usage: 
-##
-# First time launching:
-# chmod 754 Step1.sh
-##
+# Usage:
+# First time using the script
+# chmod 754 Step33.sh
+
 # Requirements: 
-# 	Input *fastq.gz files
-#       Parameters -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC <AdapterSequence> -m 30 <MinimumReadLength> 
-#	Output: trimmed *fastq.gz files and *.log files
+# 	Input:       *_sorted.bam
+#       Parameters: -s <>, -M <> indexing
+#	Output:  *rmdup.bam
 
 # Note: ${filename:9:6} extracts the sample identifier from the full file path.
 # It removes the first 9 char (e.g. "./Step1d/") and then reads the next 6 char.
@@ -36,29 +37,22 @@ TestHOME="$HOME/TestGithub"
 # insert here your ScratchDir 
 ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
-
-#Cutadaptlog: the directory hosting cutadapt log files: Ensure Cutadaptlogs exist
-mkdir -p Cutadaptlogs ## create Cutadaptlogs if it doesn t exists
+# Load SAMtools on your cluster enviorment; this is how to load SAMtools on the LiSC Server
+module load SAMtools/1.23-GCC-14.2.0
 
 cd "$ScratchDir"
 
-## Step0d: the directory hosting your fastq.gz files
-mkdir -p Step0d ## create Step0d if it does not exist
-mkdir -p Step1d ## create Step1d if it does not exist
+for filename in ./Step3d/*q30_sorted.bam; do
+    sample="${filename:9:6}"
+    base="${filename##*/}"                 # remove ./Step3d/
+    base="${base%.bam}"                    # remove .bam extension
 
-# Load cutadapt on your HPC enviorment
-module load cutadapt
-
-#reads trimmed to 30bp: -m 30
-
-for filename in ./Step0d/*.fastq.gz
-do
-  sample="${filename:9:6}"
-  base="${filename##*/}"            # remove ./Step0d/
-  base="${base%.fastq.gz}"          # remove .fastq.gz extension
-  cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -m 30 "$filename" > "$ScratchDir/Step1d/${base}.fastq" 2> "$TestHOME/Cutadaptlogs/${base}.log"
-
-  echo "$sample"
+    samtools rmdup -s "$filename" "$ScratchDir/Step3d/${base}_rmdup.bam" 
+    echo "$sample"
 done
+
+# Index all rmdup BAM files in Step3d
+samtools index -M "$ScratchDir"/Step3d/*q30_sorted_rmdup.bam
+echo "All *_q30_sorted_rmdup.bam files have been indexed successfully."
 
 echo "End:   $(date '+%H:%M')"
