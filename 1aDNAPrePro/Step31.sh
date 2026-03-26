@@ -2,22 +2,24 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Step33.sh this is the fith of six scripts to preprocess ancient DNA.
+# Version: 1.0
+# Date: Feb 2026
+# Step31.sh this is the third of seven scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-# Step33 sorts the *"_sorted.bam" files into *"_rmdup.bam" files
-# Software SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
+## Step31: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
+# By using the Software Samtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 ##
 # Usage:
 # First time using the script
-# chmod 754 Step33.sh
+# chmod 754 Step31.sh
 
 # Requirements: 
-# 	Input:       *_sorted.bam
-#       Parameters: -s <>, -M <> indexing
-#	Output:  *rmdup.bam
+# 	Input: *.sam
+#       Parameters: -b -q30 <MappingQuality> : set to 30
+#	Output: *_q30.bam
 
 # Note: ${filename:9:6} extracts the sample identifier from the full file path.
 # It removes the first 9 char (e.g. "./Step1d/") and then reads the next 6 char.
@@ -35,22 +37,23 @@ TestHOME="$HOME/TestGithub"
 # insert here your ScratchDir 
 ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
-# Load SAMtools on your cluster enviorment; this is how to load SAMtools on the LiSC Server
-module load SAMtools/1.23-GCC-14.2.0
+# Load SAMtools on your HPC enviorment; this is how to load SAMtools on the LiSC Server
+# check if your SAMtools system current version is correct.
+module load SAMtools/1.23-GCC-14.2.0 
 
 cd "$ScratchDir"
 
-for filename in ./Step3d/*q30_sorted.bam; do
-    sample="${filename:9:6}"
-    base="${filename##*/}"                 # remove ./Step3d/
-    base="${base%.bam}"                    # remove .bam extension
+##Step3d: the output directory hosting your *.bam files
+mkdir -p Step3d ## create Step3d if it does not exist
 
-    samtools rmdup -s "$filename" "$ScratchDir/Step3d/${base}_rmdup.bam" 
-    echo "$sample"
+for filename in ./Step2d/*.sam; do
+   sample="${filename:9:6}"
+   base="${filename##*/}"        # remove ./Step2d/
+   base="${base%.sam}"           # remove .sam extension
+
+   samtools view -b -q30 "$filename" > "$ScratchDir/Step3d/${base}_q30.bam"
+   echo "$sample"
 done
 
-# Index all rmdup BAM files in Step3d
-samtools index -M "$ScratchDir"/Step3d/*q30_sorted_rmdup.bam
-echo "All *_q30_sorted_rmdup.bam files have been indexed successfully."
-
 echo "End:   $(date '+%H:%M')"
+

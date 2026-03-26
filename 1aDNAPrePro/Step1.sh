@@ -2,21 +2,25 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Step31.sh this is the third of six scripts to preprocess ancient DNA.
+# Version: 1.0
+# Date: Feb 2026
+# Step1.sh this is the first of seven scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-## Step31: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
+# Step 1: Adapter trimming with Cutadapt
+# Software Cutadapt (https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200) 
 ##
-# Usage:
-# First time using the script
-# chmod 754 Step31.sh
-
+# Usage: 
+##
+# First time launching:
+# chmod 754 Step1.sh
+##
 # Requirements: 
-# 	Input: *.sam
-#       Parameters: -b -q30 <MappingQuality> : set to 30
-#	Output: *_q30.bam
+# 	Input *fastq.gz files
+#       Parameters -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC <AdapterSequence> -m 30 <MinimumReadLength> 
+#	Output: trimmed *fastq.gz files and *.log files
 
 # Note: ${filename:9:6} extracts the sample identifier from the full file path.
 # It removes the first 9 char (e.g. "./Step1d/") and then reads the next 6 char.
@@ -34,23 +38,29 @@ TestHOME="$HOME/TestGithub"
 # insert here your ScratchDir 
 ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
-# Load SAMtools on your HPC enviorment; this is how to load SAMtools on the LiSC Server
-# check if your SAMtools system current version is correct.
-module load SAMtools/1.23-GCC-14.2.0 
+
+#Cutadaptlog: the directory hosting cutadapt log files: Ensure Cutadaptlogs exist
+mkdir -p Cutadaptlogs ## create Cutadaptlogs if it doesn t exists
 
 cd "$ScratchDir"
 
-##Step3d: the output directory hosting your *.bam files
-mkdir -p Step3d ## create Step3d if it does not exist
+## Step0d: the directory hosting your fastq.gz files
+mkdir -p Step0d ## create Step0d if it does not exist
+mkdir -p Step1d ## create Step1d if it does not exist
 
-for filename in ./Step2d/*.sam; do
-   sample="${filename:9:6}"
-   base="${filename##*/}"        # remove ./Step2d/
-   base="${base%.sam}"           # remove .sam extension
+# Load cutadapt on your HPC enviorment
+module load cutadapt
 
-   samtools view -b -q30 "$filename" > "$ScratchDir/Step3d/${base}_q30.bam"
-   echo "$sample"
+#reads trimmed to 30bp: -m 30
+
+for filename in ./Step0d/*.fastq.gz
+do
+  sample="${filename:9:6}"
+  base="${filename##*/}"            # remove ./Step0d/
+  base="${base%.fastq.gz}"          # remove .fastq.gz extension
+  cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -m 30 "$filename" > "$ScratchDir/Step1d/${base}.fastq" 2> "$TestHOME/Cutadaptlogs/${base}.log"
+
+  echo "$sample"
 done
 
 echo "End:   $(date '+%H:%M')"
-

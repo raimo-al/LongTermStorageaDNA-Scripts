@@ -2,7 +2,9 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Step2.sh this is the second of six scripts to preprocess ancient DNA.
+# Version: 1.0
+# Date: Feb 2026
+# Step2.sh this is the second of seven scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 

@@ -2,22 +2,23 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Step34.sh this is the sixth of six scripts to preprocess ancient DNA.
+# Version: 1.0
+# Date: Feb 2026
+# Step32.sh this is the fourth of seven scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-## Step34: Generates summary statistics using samtools flagstat
-# Software SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
-##
+## Step32 sorts the "*.bam" files into *"_sorted.bam" files
+# By using the Software Samtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 # Usage:
-# First time using the script
-# chmod 754 Step34.sh
+# First time launching:
+# chmod 754 Step32.sh
 
 # Requirements: 
-# 	Input: sorted_rmdup.bam
-#       Parameters:
-#	Output:  Summary statistics text file *.tsv
+# 	Input:*q30.bam
+#       Parameters: -m 4G <MemoryPerThread> -@ 8 <NumberOfThreads> -o <OutputFileName>
+#	Output:  *sorted.bam files
 
 # Note: ${filename:9:6} extracts the sample identifier from the full file path.
 # It removes the first 9 char (e.g. "./Step1d/") and then reads the next 6 char.
@@ -35,21 +36,18 @@ TestHOME="$HOME/TestGithub"
 # insert here your ScratchDir 
 ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
-# Load SAMtools on your cluster enviorment; this is how to load SAMtools on the LiSC Server
+# Load SAMtools on your cluster environment; this is how to load SAMtools on the LiSC Server
 module load SAMtools/1.23-GCC-14.2.0
-
-##Summaries: the directory hosting your Summary results
-mkdir -p "$TestHOME/Summaries"  ## create Summaries if it does not exist
 
 cd "$ScratchDir"
 
-for filename in ./Step3d/*sorted_rmdup.bam;
-do 
-    samtools flagstat -O tsv "${filename}" > $TestHOME/Summaries/"${filename:9:6}"_tsvsummary.txt; #summary files colums are: QC_passed    QC_failed    Metric
+for filename in ./Step3d/*q30.bam; do
+    sample="${filename:9:6}"
+    base="${filename##*/}"        # remove ./Step3d/
+    base="${base%.bam}"           # remove .bam extension
 
-    echo ${filename:9:6}
+    samtools sort "$filename" -m 4G -@ 8 -o "$ScratchDir/Step3d/${base}_sorted.bam"
+    echo "$(date '+%H:%M') Finished converting *q30.bam to *q30_sorted.bam for sample ${sample}"
 done
-# the columns of the produced summary files are
-# QC_passed    QC_failed    Metric
 
 echo "End:   $(date '+%H:%M')"
