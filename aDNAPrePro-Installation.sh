@@ -21,7 +21,7 @@ set -e
 #####2: Alternatively, after downloading the repository from GitHub, make the script executable and run it directly:
 # chmod 754 aDNAPrePro-Install.sh
 # ------------------------------------------------------------
-
+ 
 echo "Installing aDNAPrePro..."
 echo "Start: $(date '+%H:%M')"
 
