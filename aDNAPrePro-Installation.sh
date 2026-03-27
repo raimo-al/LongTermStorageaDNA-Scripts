@@ -135,25 +135,14 @@ echo "Once you want to run the pipeline, next steps: cd $WorkDir/Scripts"
 #echo "source aDNAPrePro-LoadModules.sh"
 
 # Removing installation script.
+echo "Cleaning up installation script..."
 
-echo "DEBUG: starting cleanup"
-
-echo "DEBUG: \$0 = $0"
-echo "DEBUG: BASH_SOURCE[0] = ${BASH_SOURCE[0]}"
-echo "DEBUG: PWD = $PWD"
-
-SCRIPT_PATH="${BASH_SOURCE[0]}"
-echo "DEBUG: SCRIPT_PATH = $SCRIPT_PATH"
-
-echo "DEBUG: checking if file exists..."
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
 if [ -f "$SCRIPT_PATH" ]; then
-    echo "DEBUG: file FOUND ? attempting removal"
-    ls -l "$SCRIPT_PATH"
     rm -- "$SCRIPT_PATH"
     echo "Installation script removed."
 else
-    echo "DEBUG: file NOT found at $SCRIPT_PATH"
+    echo "Cleanup skipped: script not found at $SCRIPT_PATH"
 fi
-
 
 echo "End: $(date '+%H:%M')"
