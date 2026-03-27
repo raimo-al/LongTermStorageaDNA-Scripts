@@ -128,24 +128,32 @@ mkdir -p "$ScratchDir/Step0d" ## Step0d: the directory hosting your *.fastq.gz f
 mkdir -p "$ScratchDir/Step1d" ## Step1d: the directory hosting your *.fastq files
 mkdir -p "$ScratchDir/Step2d" ## Step2d: the directory hosting your alignment results (*.sam and *.sam.log)
 mkdir -p "$ScratchDir/Step3d" ## Step3d: the output directory hosting your *.bam files
+echo "Installation of aDNAPrePro is complete. Scratch directories created in $ScratchDir and Scripts are located in $WorkDir/Scripts"
 
-echo "Scratch directories created in $ScratchDir."
-
-echo "Installation of aDNAPrePro is complete."
-echo "Scripts are located in $WorkDir/Scripts"
-echo "Working directory: $WorkDir"
 echo ""
-echo "Once you want to run the pipeline, next steps:"
-echo "cd $WorkDir/Scripts"
+echo "Once you want to run the pipeline, next steps: cd $WorkDir/Scripts"
 #echo "source aDNAPrePro-LoadModules.sh"
-echo "./Step1.sh"
-echo ""
 
 # Removing installation script.
 
+echo "DEBUG: starting cleanup"
+
+echo "DEBUG: \$0 = $0"
+echo "DEBUG: BASH_SOURCE[0] = ${BASH_SOURCE[0]}"
+echo "DEBUG: PWD = $PWD"
+
 SCRIPT_PATH="${BASH_SOURCE[0]}"
+echo "DEBUG: SCRIPT_PATH = $SCRIPT_PATH"
+
+echo "DEBUG: checking if file exists..."
 if [ -f "$SCRIPT_PATH" ]; then
+    echo "DEBUG: file FOUND ? attempting removal"
+    ls -l "$SCRIPT_PATH"
     rm -- "$SCRIPT_PATH"
     echo "Installation script removed."
+else
+    echo "DEBUG: file NOT found at $SCRIPT_PATH"
 fi
+
+
 echo "End: $(date '+%H:%M')"
