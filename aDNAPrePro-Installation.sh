@@ -137,12 +137,11 @@ echo "Once you want to run the pipeline, next steps: cd $WorkDir/Scripts"
 # Removing installation script.
 echo "Cleaning up installation script..."
 
-SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
-if [ -f "$SCRIPT_PATH" ]; then
-    rm -- "$SCRIPT_PATH"
+if [ -f "$INSTALL_SCRIPT_PATH" ]; then
+    rm -- "$INSTALL_SCRIPT_PATH"
     echo "Installation script removed."
 else
-    echo "Cleanup skipped: script not found at $SCRIPT_PATH"
+    echo "Cleanup skipped: script not found at $INSTALL_SCRIPT_PATH"
 fi
 
 echo "End: $(date '+%H:%M')"
