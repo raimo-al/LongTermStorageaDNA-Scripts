@@ -14,6 +14,10 @@ LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
 # Installation and pipeline
 
+```bash
+wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
+```
+
 ## Requirements :
 For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
 
