@@ -2,7 +2,7 @@
 set -e
 
 # ------------------------------------------------------------
-Contact: alexandra.raimo@protonmail.com
+# Contact: alexandra.raimo@protonmail.com
 # Project name:  aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
