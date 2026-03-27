@@ -21,7 +21,7 @@ set -e
 #####2: Alternatively, after downloading the repository from GitHub, make the script executable and run it directly:
 # chmod 754 aDNAPrePro-Install.sh
 # ------------------------------------------------------------
- 
+
 echo "Installing aDNAPrePro..."
 echo "Start: $(date '+%H:%M')"
 
@@ -64,7 +64,6 @@ if [ -z "$ScriptDir" ]; then
     exit 1
 fi
 
-# Copy ONLY prefixed scripts
 #Copies all scripts with Prefix aDNAPrePro in the directory Scripts
 cp "$ScriptDir"/aDNAPrePro*.sh "$WorkDir/Scripts/"
 echo "Scripts installed in $WorkDir/Scripts."
@@ -76,10 +75,10 @@ rm -rf "$ExtractedDir"
 cd "$WorkDir/Scripts"
 
 #Remove Prefix aDNAPrePro in "$WorkDir/Scripts"
-shopt -s nullglob
-for f in aDNAPrePro-Step*.sh; do
-    mv -n "$f" "${f#aDNAPrePro-}"
-done
+#shopt -s nullglob
+#for f in aDNAPrePro-Step*.sh; do
+#    mv -n "$f" "${f#aDNAPrePro-}"
+#done
 
 # Make all scripts executable
 chmod 754 *.sh
