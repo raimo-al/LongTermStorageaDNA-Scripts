@@ -23,7 +23,7 @@ Before running the pipeline, please download your preferred reference genome int
 
 ```bash
 ScratchDir="/path/to/your/scratchdirectory/"
-``
+```
 
 Please also make sure that all shell scripts have permissions and are executable.
 
