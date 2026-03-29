@@ -4,9 +4,11 @@ A bioinformatics pipeline for the analysis of human ancient DNA (aDNA) samples.
 This pipeline contains a set of scripts and customized code, which were originally developed for the analysis of ancient human genomic data generated for the project "The effect of long-term storage on ancient DNA samples" (Master's thesis). 
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
+# Pipeline workflow:
+The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It contains scripts and customised code developed for the analysis of ancient human genomic data generated  the project **“The effect of long-term storage on ancient DNA samples”** (Master’s thesis).
 
-
-# Installation and pipeline
+# aDNAPrePro
+## Installation and pipeline
 
 Please make sure that all shell scripts have permissions and are executable. First please launch from your shell:
 
@@ -17,12 +19,6 @@ wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/Lo
 ## Requirements :
 For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
 
-## Pipeline workflow:
-
-## aDNAPrePro
-
-The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It contains scripts and customised code developed for the analysis of ancient human genomic data generated  the project **“The effect of long-term storage on ancient DNA samples”** (Master’s thesis).
-
 Please make sure that all shell scripts have permissions and are executable.
 
 **aDNAPrePro-Installation.sh**
@@ -30,6 +26,13 @@ Please make sure that all shell scripts have permissions and are executable.
 Is your Installation Script and is executed automatically by the wget command above.
 
 **Please launch the scripts in the following order:**
+
+## Important Note:
+In each script you need to insert the path of your Scratch directory ($ScratchDir) . If you installed the Pipeline with the aDNAPrePro-Installation.sh please use the same path as you typed in the installation script. 
+
+```text
+ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
+```
 
 - **Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
 
