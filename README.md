@@ -1,11 +1,11 @@
 # LongTermStorageaDNA pipeline
 A bioinformatics pipeline for the analysis of human ancient DNA (aDNA) samples.
 
-This pipeline contains a set of scripts and customized code, which were originally developed for the analysis of ancient human genomic data generated for the project "The effect of long-term storage on ancient DNA samples" (Master's thesis). 
+This pipeline contains a set of scripts and customized code, which were originally developed for the analysis of ancient human genomic data generated for the project **"The effect of long-term storage on ancient DNA samples" (Master's thesis)**. 
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 # Pipeline workflow:
-The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It contains scripts and customised code developed for the analysis of ancient human genomic data generated  the project **“The effect of long-term storage on ancient DNA samples”** (Master’s thesis).
+The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. 
 
 # aDNAPrePro
 ## Installation and pipeline
@@ -31,7 +31,7 @@ Please also make sure that all shell scripts have permissions and are executable
 
 This is the installation script and is executed automatically by the wget command above.
 
-## **aDNAPrePro remaining scripts** :
+## `aDNAPrePro core pipeline scripts` :
 
 ## Important Note:
 
