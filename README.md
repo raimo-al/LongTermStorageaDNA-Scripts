@@ -63,7 +63,7 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 `Step34.sh`: Step34 consists of generating summary statistics using samtools flagstat
 
-- `**Step4CreateReport.sh**`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+- `Step4CreateReport.sh`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
 
 # Citation:
 
