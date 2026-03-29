@@ -23,6 +23,12 @@ Before running the pipeline, please download your preferred **reference genome**
 ScratchDir="/path/to/your/scratchdirectory/"
 ```
 
+Please also insert the correct path for the reference genome in $ref. If not following message will appear:
+
+```text
+ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
+```
+
 Please also make sure that all shell scripts have permissions and are executable.
 
 ## `aDNAPrePro-Installation.sh`:
@@ -38,7 +44,7 @@ In each script, you need to insert the path to your scratch directory (`$Scratch
 **Example message**:
 
 ```text
-ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
+$ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 ```
 
 **Please launch the scripts in the following order:**
