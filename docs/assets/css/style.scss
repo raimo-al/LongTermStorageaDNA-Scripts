@@ -1,0 +1,35 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Change main header color (green → blue) */
+.page-header {
+  background-color: #007bff !important;
+  background-image: none !important;
+}
+
+/* Buttons */
+.btn {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Links */
+a {
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Smaller text */
+body {
+  font-size: 15px;
+}
+
+/* Optional: nicer width */
+.main-content {
+  max-width: 900px;
+}
