@@ -69,9 +69,6 @@ InputBam="$ScratchDir/AllBam"
 OutputDir="${OutputDir:-$WorkDir/AmberDir/Results}"
 BamList="$WorkDir/AmberDir/BamList.tsv"
 
-# InputBam="/lisc/scratch/anthropology/Pinhasi_group/raimo/AllBam"   ##First test with February data
-# OutputDir="/lisc/home/user/raimo/2LongTermStorage-Pipeline/AmberDir/Results" ## change to results
-
 # Define path for Amber
 AMBER="${AMBER:-$WorkDir/AmberDir/AMBER.py}"
 
