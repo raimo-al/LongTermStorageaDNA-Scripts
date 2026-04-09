@@ -13,7 +13,7 @@ The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The
 First, run the following command in your shell:
 
 ```bash
-wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
+wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/aDNAPrePro/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
 ```
 
 ## Requirements :
