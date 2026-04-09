@@ -50,11 +50,11 @@ if [ -z "$ExtractedDir" ]; then
 fi
 
 # Detect script directory
-ScriptDir=$(find "$ExtractedDir" -maxdepth 2 -type d -name "*aDNAPrePro*" | head -n 1)
+ScriptDir="$ExtractedDir/modules/aDNAPrePro"
 
-if [ -z "$ScriptDir" ]; then
-    echo "Error: Could not find script directory."
-    ls -R "$ExtractedDir"
+#Check Module
+if [[ ! -d "$ScriptDir" ]]; then
+    echo "Error: aDNAPrePro module not found in modules/aDNAPrePro"
     exit 1
 fi
 
