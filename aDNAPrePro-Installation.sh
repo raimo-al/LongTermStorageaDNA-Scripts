@@ -6,13 +6,13 @@ set -e
 # Project name:  aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# aDNAPrePro-Install.sh this is the first of nine scripts to preprocess ancient DNA samples.
+# aDNAPrePro-Installation.sh this is the first of nine scripts to preprocess ancient DNA samples.
 # This script is optional; it sets up the environment required for the remaining seven scripts. 
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-# aDNAPrePro-Install.sh: Installation script to run the aDNAPrePro pipeline.
+# aDNAPrePro-Installation.sh: Installation script to run the aDNAPrePro pipeline.
 ##
 # ------------------------------------------------------------
 
