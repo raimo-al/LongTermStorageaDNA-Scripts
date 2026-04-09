@@ -31,7 +31,7 @@ ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 
 Please also make sure that all shell scripts have permissions and are executable.
 
-# LongTermStorage Pipeline
+# LongTermStorage Pipeline: Changes ongoing
 ## Installation and pipeline
 ```bash
 wget -O LongTermStorageaDNA-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/install/LongTermStorageaDNA-Installation.sh && bash LongTermStorageaDNA-Installation.sh
