@@ -6,7 +6,7 @@ set -e
 # Project name:  LongTermStorageaDNA Pipeline
 # Version: 1.0
 # Date: Apr 2026
-# LongTermStorage-Installation.sh is the first script of the LongTermStorageaDNA Pipeline
+# LongTermStorageaDNA-Installation.sh is the first script of the LongTermStorageaDNA Pipeline
 # This script is optional; it sets up the environment required for the remaining scripts. 
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
