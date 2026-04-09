@@ -50,7 +50,7 @@ if [ -z "$ExtractedDir" ]; then
 fi
 
 # Detect script directory
-ScriptDir="$ExtractedDir/modules/aDNAPrePro_preprocessing""
+ScriptDir="$ExtractedDir/modules/aDNAPrePro_preprocessing"
 
 #Check Module
 if [[ ! -d "$ScriptDir" ]]; then
