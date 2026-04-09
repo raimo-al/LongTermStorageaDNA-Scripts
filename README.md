@@ -31,6 +31,12 @@ ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 
 Please also make sure that all shell scripts have permissions and are executable.
 
+# LongTermStorage Pipeline
+## Installation and pipeline
+```bash
+wget -O LongTermStorageaDNA-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/LongTermStorageaDNA-Installation.sh && bash LongTermStorageaDNA-Installation.sh
+```
+
 ## `aDNAPrePro-Installation.sh`:
 
 This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
