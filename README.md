@@ -79,7 +79,7 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 # Citation:
 
-**Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.**
+**Please cite https://doi.org/10.25365/thesis.77783 if you use this pipeline.** 
 
 LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
