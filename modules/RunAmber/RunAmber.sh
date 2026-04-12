@@ -7,10 +7,15 @@ set -euo pipefail
 # Version: 1.0
 # Date: Apr 2026
 ##
-# RunAmber.sh this is the first of two shell scripts to assess fragmentation in aDNA samples.
-# RunAmber.sh specifically is a customized script, which was employed to run multiple BAM files automatically sequentially,
-# if they were located in the same directory with the python software AMBER. This means this script automatically updates the list “BamList.tsv” with each new sample name, BAM-file and path.
-# NOTE: This script enables the user through automatic updating of BamList.tv to analyse more than 6 samples at a time.
+# module: RunAmber
+# Version: 1.0
+# Date: Apr 2026
+# RunAmber.sh this is the first of two shell scripts to run AMBER and to assess fragmentation in aDNA samples.
+# RunAmber.sh specifically is a customized script, which was employed to run AMBER with multiple BAM files automatically and sequentially,
+# if they are located in the same directory, using the Python software AMBER (https://doi.org/10.1093/bioinformatics/btae436)
+# This means the script automatically updates the list “BamList.tsv” with each new sample name, BAM file, and path,
+# representing a minor improvement that simplifies running multiple samples.
+# NOTE: Through the automatic updating of BamList.tsv, the script enables the analysis of more than 6 samples at a time.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
@@ -39,16 +44,22 @@ echo "Start: $(date '+%H:%M')"
 #python -m pip install -U matplotlib
 #python -m pip install -U numpy
 
-#Loads configuration if it exists:
-if [[ -f "$HOME/LongTermStorageaDNA/config.sh" ]]; then
-    source "$HOME/LongTermStorageaDNA/config.sh"
+#Loads configuration if it exists (optional):
+ScriptDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   ## location of this script
+if [[ -f "$ScriptDir/../config.sh" ]]; then
+    echo "Loading configuration from config.sh"
+    source "$ScriptDir/../config.sh"
+else
+    echo "No config file found. Using default settings."
 fi
 
-# Define paths to directories and files
+# Define paths to directories and files in $HOME subdirectories/working directories
 # $HOME is always the /path/to/your/homedirectory/
-
 # Define working directory
-WorkDir="${WorkDir:-$HOME/LongTermStorageaDNA}"
+WorkDir="${WorkDir:-$HOME/RunAmber}"
+AmberDir="$WorkDir/AmberDir"                               ## AmberDir: AMBER installation directory
+OutputDir="${OutputDir:-$WorkDir/AmberDir/Results}"
+mkdir -p "$OutputDir"
 
 ## Check for $ScratchDir 
 if [[ -n "${ScratchDir:-}" ]]; then
@@ -64,9 +75,8 @@ if [[ ! -d "$ScratchDir" ]]; then
     exit 1
 fi
 
-# Define paths
+# Define paths for "$ScratchDir subdirectories
 InputBam="$ScratchDir/AllBam"
-OutputDir="${OutputDir:-$WorkDir/AmberDir/Results}"
 BamList="$WorkDir/AmberDir/BamList.tsv"
 
 # Define path for Amber
@@ -85,11 +95,10 @@ fi
 echo "Using AMBER: $AMBER"
 
 # Create all working directories in your LongTermStorageaDNA directory.
-mkdir -p "$WorkDir/AmberDir"
-mkdir -p "$WorkDir/AmberDir/Results"
 mkdir -p "$(dirname "$BamList")"
 
-# aDNAPrePro: If the files exist copy Bam files from Step3d to a subdirectory of your current $WorkDir 
+# InputBam: all *.bam and *.bai files need to be located in $InputBam
+# aDNAPrePro: If you used aDNAPrePro copy Bam files from Step3d to a subdirectory of your current $WorkDir 
 if [[ ! -d "$InputBam" ]]; then
     echo "Error: InputBam directory does not exist: $InputBam"
     exit 1
