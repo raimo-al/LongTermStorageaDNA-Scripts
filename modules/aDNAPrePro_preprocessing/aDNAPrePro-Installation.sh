@@ -125,6 +125,5 @@ echo "Installation of aDNAPrePro is complete. Scratch directories created in $Sc
 
 echo ""
 echo "Once you want to run the pipeline, next steps: cd $WorkDir/Scripts"
-#echo "source aDNAPrePro-LoadModules.sh"
 
 echo "End: $(date '+%H:%M')"
