@@ -136,7 +136,7 @@ for bam_file in *.bam; do
     python3 "$AMBER" --bamfiles "$BamList" --output "$sample_output"
     
     # Check if the output file was successfully created
-    if [[ -f "$sample_output"* 1> /dev/null 2>&1; then
+    if compgen -G "$sample_output*" > /dev/null; then
         echo "Success: Results for sample $sample written to $sample_output"
     else
         echo "Error: Results for sample $sample not found in $sample_output"
