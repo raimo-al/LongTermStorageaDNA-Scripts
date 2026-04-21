@@ -5,7 +5,13 @@ This pipeline contains a set of scripts and customized code, which were original
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 # Pipeline workflow:
+The pipeline is composed of modules, for which two are already available:
+
+1. **aDNAPrePro** (**v1.1**)
 The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
+
+2. **RunAmber** (**v1.0**)
+The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
 
 # aDNAPrePro
 ## Installation and pipeline
@@ -15,6 +21,10 @@ First, run the following command in your shell:
 ```bash
 wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/aDNAPrePro_preprocessing/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
 ```
+
+## `aDNAPrePro-Installation.sh`:
+
+This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
 
 ## Requirements :
 Before running the pipeline, please download your preferred **reference genome** into your scratch directory:
@@ -30,16 +40,6 @@ ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 ```
 
 Please also make sure that all shell scripts have permissions and are executable.
-
-# RunAmber module (Changes ongoing):
-## Installation and pipeline
-```bash
-wget -O RunAmber-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunAmber/RunAmber-Installation.sh && bash RunAmber-Installation.sh
-```
-
-## `aDNAPrePro-Installation.sh`:
-
-This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
 
 ## `aDNAPrePro core pipeline scripts` :
 
@@ -76,6 +76,61 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 `Step34.sh`: Step34 consists of generating summary statistics using samtools flagstat
 
 - `Step4CreateReport.sh`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+
+# RunAmber module (Changes ongoing):
+## Installation and pipeline
+
+First, run the following command in your shell:
+
+```bash
+wget -O RunAmber-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunAmber/RunAmber-Installation.sh && bash RunAmber-Installation.sh
+```
+
+## `RunAmber-Installation.sh`:
+
+This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
+
+## `RunAmber core pipeline scripts` :
+
+- `RunAmber.sh`: specifically is a customized script, which was employed to run AMBER with multiple BAM files automatically and sequentially,
+if they are located in the same directory, using the Python software AMBER.
+This means the script automatically updates the list “BamList.tsv” with each new sample name, BAM file, and path,
+representing a minor improvement that simplifies running multiple samples.
+NOTE: Through the automatic updating of BamList.tsv, the script enables the analysis of more than 6 samples at a time.
+
+AMBER: (https://doi.org/10.1093/bioinformatics/btae436)
+
+- `MeanFrag.sh`: calculates mean fragment length for each from AMBER output and summarises it into a *.txt file (e.g. mean_fragment_length.txt).
+
+Usage: 
+
+**Single dataset:**
+```bash
+./MeanFrag.sh -i1 <Path/to/InputDir1> -c1 {st|N} -o <Path/to/OutputFile>
+```
+
+**Two datasets:**
+```bash
+./MeanFrag.sh -i1 <Path/to/InputDir1> -c1 {st|N} -i2 <Path/to/InputDir2> -c2 {st|N} -o <Path/to/OutputFile>
+```
+
+-o <Path/to/OutputFile> means for example ./Results/mean_fragment_length.txt
+
+**Parameters:**
+
+- -i1   Input directory for dataset 1 (AMBER output)
+- -i2   Input directory for dataset 2 (optional)
+- -c1   Cutoff value for dataset 1 (standard or numeric) 
+- -c2   Cutoff for dataset 2 (optional)
+- -o    Output file (e.g.: mean_fragment_length.txt)
+
+**Cutoff options:**
+
+- st    standard: computes mean fragment length using all reads
+- N     numeric cutoff (e.g. 75): includes only reads = N bp: e.g. "-c1 90" truncates reads to 90bp
+
+NOTE: The mean fragment lenghth can be computed for max 2 datasets at a time: i1, i2
+
 
 # Citation:
 
