@@ -100,7 +100,16 @@ NOTE: Through the automatic updating of BamList.tsv, the script enables the anal
 
 AMBER: (https://doi.org/10.1093/bioinformatics/btae436)
 
-- `MeanFrag.sh`: ##  calculates mean fragment length from AMBER output.
+- `MeanFrag.sh`: calculates mean fragment length for each from AMBER output and summarises it into a *.txt file (e.g. mean_fragment_length.txt).
+
+  Example from my project:
+
+  | Sample            | Dataset  | Cutoff | MeanFragmentLength |
+|------------------|----------|--------|--------------------|
+| AUG175-results   | dataset1 | st     | 52.9901            |
+| AUG182-results   | dataset1 | st     | 52.3955            |
+| AUG87-results    | dataset1 | st     | 54.0872            |
+| ...              | ...      | ...    | ...                |
 
 # Citation:
 
