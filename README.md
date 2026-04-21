@@ -79,9 +79,28 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 # RunAmber module (Changes ongoing):
 ## Installation and pipeline
+
+First, run the following command in your shell:
+
 ```bash
 wget -O RunAmber-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunAmber/RunAmber-Installation.sh && bash RunAmber-Installation.sh
 ```
+
+## `RunAmber-Installation.sh`:
+
+This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
+
+## `RunAmber core pipeline scripts` :
+
+- `RunAmber.sh`: specifically is a customized script, which was employed to run AMBER with multiple BAM files automatically and sequentially,
+if they are located in the same directory, using the Python software AMBER (https://doi.org/10.1093/bioinformatics/btae436)
+This means the script automatically updates the list “BamList.tsv” with each new sample name, BAM file, and path,
+representing a minor improvement that simplifies running multiple samples.
+NOTE: Through the automatic updating of BamList.tsv, the script enables the analysis of more than 6 samples at a time.
+
+AMBER: (https://doi.org/10.1093/bioinformatics/btae436)
+
+- `MeanFrag.sh`: ##  calculates mean fragment length from AMBER output.
 
 # Citation:
 
