@@ -7,9 +7,11 @@ Thesis available here: https://utheses.univie.ac.at/detail/74668
 # Pipeline workflow:
 The pipeline is composed of modules, for which two are already available:
 
-1. **aDNAPrePro** (**v1.1**): The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
+1. **aDNAPrePro** (**v1.1**)
+The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
 
-2. **RunAmber** (**v1.0**): The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
+2. **RunAmber** (**v1.0**)
+The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
 
 # aDNAPrePro
 ## Installation and pipeline
