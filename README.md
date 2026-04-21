@@ -102,14 +102,35 @@ AMBER: (https://doi.org/10.1093/bioinformatics/btae436)
 
 - `MeanFrag.sh`: calculates mean fragment length for each from AMBER output and summarises it into a *.txt file (e.g. mean_fragment_length.txt).
 
-  Example from my project:
+Usage: 
 
-  | Sample            | Dataset  | Cutoff | MeanFragmentLength |
-|------------------|----------|--------|--------------------|
-| AUG175-results   | dataset1 | st     | 52.9901            |
-| AUG182-results   | dataset1 | st     | 52.3955            |
-| AUG87-results    | dataset1 | st     | 54.0872            |
-| ...              | ...      | ...    | ...                |
+**Single dataset:**
+```bash
+./MeanFrag.sh -i1 <Path/to/InputDir1> -c1 {st|N} -o <Path/to/OutputFile>
+```
+
+**Two datasets:**
+```bash
+./MeanFrag.sh -i1 <Path/to/InputDir1> -c1 {st|N} -i2 <Path/to/InputDir2> -c2 {st|N} -o <Path/to/OutputFile>
+```
+
+-o <Path/to/OutputFile> means for example ./Results/mean_fragment_length.txt
+
+**Parameters:**
+
+- -i1   Input directory for dataset 1 (AMBER output)
+- -i2   Input directory for dataset 2 (optional)
+- -c1   Cutoff value for dataset 1 (Value 
+- -c2   Cutoff for dataset 2 (optional)
+- -o    Output file (e.g.: mean_fragment_length.txt)
+
+**Cutoff options:**
+
+- st    standard: computes mean fragment length using all reads
+- N     numeric cutoff (e.g. 75): includes only reads = N bp: e.g. "-c1 90" truncates reads to 90bp
+
+NOTE: The mean fragment lenghth can be computed for max 2 datasets at a time: i1, i2
+
 
 # Citation:
 
