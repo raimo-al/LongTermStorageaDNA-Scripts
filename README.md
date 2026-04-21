@@ -5,7 +5,11 @@ This pipeline contains a set of scripts and customized code, which were original
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 # Pipeline workflow:
-The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
+The pipeline is composed of modules, for which two are already available:
+
+1. **aDNAPrePro** (**v1.1**): The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
+
+2. **RunAmber** (**v1.0**): 
 
 # aDNAPrePro
 ## Installation and pipeline
