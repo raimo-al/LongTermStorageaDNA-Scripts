@@ -9,7 +9,7 @@ The pipeline is composed of modules, for which two are already available:
 
 1. **aDNAPrePro** (**v1.1**): The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
 
-2. **RunAmber** (**v1.0**): 
+2. **RunAmber** (**v1.0**): The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
 
 # aDNAPrePro
 ## Installation and pipeline
@@ -19,6 +19,10 @@ First, run the following command in your shell:
 ```bash
 wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/aDNAPrePro_preprocessing/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
 ```
+
+## `aDNAPrePro-Installation.sh`:
+
+This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
 
 ## Requirements :
 Before running the pipeline, please download your preferred **reference genome** into your scratch directory:
@@ -34,16 +38,6 @@ ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 ```
 
 Please also make sure that all shell scripts have permissions and are executable.
-
-# RunAmber module (Changes ongoing):
-## Installation and pipeline
-```bash
-wget -O RunAmber-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunAmber/RunAmber-Installation.sh && bash RunAmber-Installation.sh
-```
-
-## `aDNAPrePro-Installation.sh`:
-
-This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
 
 ## `aDNAPrePro core pipeline scripts` :
 
@@ -80,6 +74,12 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 `Step34.sh`: Step34 consists of generating summary statistics using samtools flagstat
 
 - `Step4CreateReport.sh`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+
+# RunAmber module (Changes ongoing):
+## Installation and pipeline
+```bash
+wget -O RunAmber-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunAmber/RunAmber-Installation.sh && bash RunAmber-Installation.sh
+```
 
 # Citation:
 
