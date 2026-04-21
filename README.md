@@ -93,7 +93,7 @@ This is the installation script and is executed automatically by the `wget` comm
 ## `RunAmber core pipeline scripts` :
 
 - `RunAmber.sh`: specifically is a customized script, which was employed to run AMBER with multiple BAM files automatically and sequentially,
-if they are located in the same directory, using the Python software AMBER (https://doi.org/10.1093/bioinformatics/btae436)
+if they are located in the same directory, using the Python software AMBER.
 This means the script automatically updates the list “BamList.tsv” with each new sample name, BAM file, and path,
 representing a minor improvement that simplifies running multiple samples.
 NOTE: Through the automatic updating of BamList.tsv, the script enables the analysis of more than 6 samples at a time.
