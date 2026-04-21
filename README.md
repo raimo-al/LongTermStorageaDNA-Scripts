@@ -5,12 +5,12 @@ This pipeline contains a set of scripts and customized code, which were original
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 # Pipeline workflow:
-The pipeline is composed of modules, for which two are already available:
+The pipeline is composed of modules, for which **two** are already available:
 
-1. **aDNAPrePro** (**v1.1**)
+## 1. aDNAPrePro (v1.1) 
 The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
 
-2. **RunAmber** (**v1.0**)
+## 2. RunAmber (v1.0) 
 The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
 
 # aDNAPrePro
@@ -102,7 +102,7 @@ AMBER: (https://doi.org/10.1093/bioinformatics/btae436)
 
 - `MeanFrag.sh`: calculates mean fragment length for each from AMBER output and summarises it into a *.txt file (e.g. mean_fragment_length.txt).
 
-Usage: 
+**Usage:**
 
 **Single dataset:**
 ```bash
