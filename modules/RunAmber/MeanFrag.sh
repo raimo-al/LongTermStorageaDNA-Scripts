@@ -33,7 +33,7 @@ set -euo pipefail
 #
 #   -i1   Input directory for dataset 1 (AMBER output)
 #   -i2   Input directory for dataset 2 (optional)
-#   -c1   Cutoff value for dataset 1 (Value 
+#   -c1   Cutoff value for dataset 1 (standard or numeric) 
 #   -c2   Cutoff for dataset 2 (optional)
 #   -o    Output file (e.g.: mean_fragment_length.txt)
 #
