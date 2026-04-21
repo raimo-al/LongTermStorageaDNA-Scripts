@@ -38,7 +38,7 @@ set -euo pipefail
 #   -o    Output file (e.g.: mean_fragment_length.txt)
 #
 #   st    standard: computes mean fragment length using all reads
-#   N     numeric cutoff (e.g. 75): includes only reads = N bp: e.g. "-c1 90" truncates reads to 90bp
+#   N     numeric cutoff (e.g. 75): Applies a maximum read length cutoff = N bp: e.g. "-c1 90" limits reads to = 90bp
 #
 # The mean fragment lenghth can be computed for max 2 datasets at a time: i1, i2
 #
