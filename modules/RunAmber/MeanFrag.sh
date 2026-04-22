@@ -38,15 +38,15 @@ set -euo pipefail
 #   -o    Output file (e.g.: mean_fragment_length.txt)
 #
 #   st    standard: computes mean fragment length using all reads
-#   N     numeric cutoff (e.g. 75): Applies a maximum read length cutoff = N bp: e.g. "-c1 90" limits reads to = 90bp
+#   N     numeric cutoff (e.g. 75): Applies a maximum read length cutoff (= N bp) (e.g. -c1 90 limits reads to = 90 bp)
 #
 # The mean fragment lenghth can be computed for max 2 datasets at a time: i1, i2
 #
 #
 # Note (project specific):
 # A cutoff of 75 bp enables direct comparison between:
-# - 2015 MiSeq data (max 75 bp)
-# - 2023 NextSeq/NovaSeq data
+# - 2015 MiSeq data (sequenced to a maximum of 75 bp)
+# - 2023 NextSeq/NovaSeq data (after applying a read length cutoff of = 75 bp)
 #
 # Example for LongTermStorageaDNA project:
 # ./MeanFrag.sh -i1 ./AMBER_2015 -c1 st -i2 ./AMBER_2023 -c2 75 -o mean_fragment_length_summary.txt
