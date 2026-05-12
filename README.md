@@ -77,7 +77,7 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 - `Step4CreateReport.sh`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
 
-# RunAmber module (Changes ongoing):
+# RunAmber module:
 ## Installation and pipeline
 
 First, run the following command in your shell:
