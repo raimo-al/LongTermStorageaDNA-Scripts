@@ -10,7 +10,7 @@ The pipeline is composed of modules, for which **two** are already available:
 ## 1. aDNAPrePro (v1.1) 
 The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses aDNA samples.
 
-## 2. RunAmber (v1.0) 
+## 2. RunAmberFrag (v1.0) 
 The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
 
 ## 3. RunDeam (v1.0)
@@ -80,7 +80,7 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 - `Step4CreateReport.sh`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
 
-# RunAmber module:
+# RunAmberFrag module:
 ## Installation and pipeline
 
 First, run the following command in your shell:
@@ -89,11 +89,11 @@ First, run the following command in your shell:
 wget -O RunAmber-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunAmber/RunAmber-Installation.sh && bash RunAmber-Installation.sh
 ```
 
-## `RunAmber-Installation.sh`:
+## `RunAmberFrag-Installation.sh`:
 
 This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
 
-## `RunAmber core pipeline scripts` :
+## `RunAmberFrag core pipeline scripts` :
 
 - `RunAmber.sh`: specifically is a customized script, which was employed to run AMBER with multiple BAM files automatically and sequentially,
 if they are located in the same directory, using the Python software AMBER.
