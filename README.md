@@ -13,6 +13,9 @@ The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The
 ## 2. RunAmber (v1.0) 
 The second module runs the python programe **AMBER** and fragmentation analysis (mean fragment length). 
 
+## 3. RunDeam (v1.0)
+The third modules runs the program **mapDamage** and calculates deamination values
+
 # aDNAPrePro
 ## Installation and pipeline
 
@@ -57,7 +60,7 @@ $ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 
 - `Step1.sh`: Step 1 consists of Adapter trimming with Cutadapt
 
-Cutadapt: https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200
+Cutadapt (https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200)
 
 - `Step2.sh`: Step 2 consists of aligning your samples to the reference genome with bwa
 
@@ -77,7 +80,7 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 - `Step4CreateReport.sh`: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
 
-# RunAmber module (Changes ongoing):
+# RunAmber module:
 ## Installation and pipeline
 
 First, run the following command in your shell:
@@ -132,6 +135,25 @@ AMBER: (https://doi.org/10.1093/bioinformatics/btae436)
 NOTE: The mean fragment lenghth can be computed for max 2 datasets at a time: i1, i2
 
 
+# RunDeam module:
+## Installation and pipeline
+
+First, run the following command in your shell:
+
+```bash
+wget -O RunDeam-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/modules/RunDeam/RunDeam-Installation.sh && bash RunDeam-Installation.sh
+```
+
+## `RunDeam-Installation.sh`:
+
+This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
+
+## `RunDeam core pipeline scripts` :
+- `RunDeam.sh`: specifically is a customized script, which was employed to run mapDamage with multiple BAM files automatically and sequentially,
+if they are located in the same directory, using the software mapDamage.
+
+mapDamage (https://doi.org/10.1093/bioinformatics/btt193 ; https://doi.org/10.1093/bioinformatics/btr347 )
+
 # Citation:
 
 **Please cite https://doi.org/10.25365/thesis.77783 if you use this pipeline.** 
@@ -142,12 +164,18 @@ The computational results of this work have been achieved using the University o
 
 # Additional references include:
 
-Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet. journal, 17(1), 10-12.
+Aurelien Ginolhac, Morten Rasmussen, M. Thomas P. Gilbert, Eske Willerslev, Ludovic Orlando, mapDamage: testing for damage patterns in ancient DNA sequences, Bioinformatics, Volume 27, Issue 15, August 2011, Pages 2153–2155
 
 bwa Li, H., & Durbin, R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics , 25(14), 1754–1760. https://doi.org/10.1093/bioinformatics/btp324. Download: http://bio-bwa.sourceforge.net/bwa.shtml
-
-SAMtools Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., … 1000 Genome Project Data Processing Subgroup. (2009). The Sequence Alignment/Map format and SAMtools. Bioinformatics , 25(16), 2078–2079. https://doi.org/10.1093/bioinformatics/btp352. Download: http://www.htslib.org/
 
 Dolenz, S., van der Valk, T., Jin, C., Oppenheimer, J., Sharif, M. B., Orlando, L., ... & Heintzman, P. D. (2024). Unravelling reference bias in ancient DNA datasets. Bioinformatics, 40(7), btae436.
 
 Fernandes, DM, Cheronet, O, Gelabert, P, Pinhasi, R. TKGWV2: an ancient DNA relatedness pipeline for ultra-low coverage whole genome shotgun data. Sci Rep 11, 21262 (2021). https://doi.org/10.1038/s41598-021-00581-3
+
+Hákon Jónsson, Aurélien Ginolhac, Mikkel Schubert, Philip L. F. Johnson, Ludovic Orlando, mapDamage2.0: fast approximate Bayesian estimates of ancient DNA damage parameters, Bioinformatics, Volume 29, Issue 13, July 2013, Pages 1682–1684,
+
+Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet. journal, 17(1), 10-12.
+
+SAMtools Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., … 1000 Genome Project Data Processing Subgroup. (2009). The Sequence Alignment/Map format and SAMtools. Bioinformatics , 25(16), 2078–2079. https://doi.org/10.1093/bioinformatics/btp352. Download: http://www.htslib.org/
+
+
