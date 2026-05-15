@@ -154,6 +154,25 @@ if they are located in the same directory, using the software mapDamage.
 
 mapDamage (https://doi.org/10.1093/bioinformatics/btt193 ; https://doi.org/10.1093/bioinformatics/btr347 )
 
+SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
+
+## Requirements :
+Before running the pipeline, please download your preferred **reference genome** into your scratch directory:
+
+```bash
+ScratchDir="/path/to/your/scratchdirectory/"
+```
+
+Please also insert the correct path to the reference genome in `$ref`. Otherwise, the following message will appear:
+
+```text
+ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
+```
+
+NOTE: The ref genome used for mapDamage has to be identical to the ref genome used for your BAM alignment, if not the script will fail.
+
+Please also make sure that all shell scripts have permissions and are executable.
+
 # Citation:
 
 **Please cite https://doi.org/10.25365/thesis.77783 if you use this pipeline.** 
